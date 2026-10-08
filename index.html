@@ -16,9 +16,8 @@
     --mauve: #cba6f7;
     --blue: #89b4fa;
     --green: #a6e3a1;
-    --green-dark: #40a02b;
     --red: #f38ba8;
-    --red-dark: #d20f39;
+    --yellow: #f9e2af;
   }
   * { box-sizing: border-box; margin: 0; padding: 0; }
   body {
@@ -41,123 +40,54 @@
     padding: 28px;
     box-shadow: 0 20px 60px rgba(0,0,0,.5);
   }
-  h1 {
-    font-size: 22px;
-    text-align: center;
-    margin-bottom: 6px;
-  }
+  h1 { font-size: 22px; text-align: center; margin-bottom: 6px; }
   h1 span { color: var(--mauve); }
-  .subtitle {
-    text-align: center;
-    color: var(--subtext);
-    font-size: 13px;
-    margin-bottom: 22px;
-  }
-  .label {
-    font-size: 12px;
-    text-transform: uppercase;
-    letter-spacing: .08em;
-    color: var(--subtext);
-    margin-bottom: 8px;
-    display: block;
-  }
-  .id-row {
-    display: flex;
-    gap: 8px;
-    margin-bottom: 18px;
-  }
+  .subtitle { text-align: center; color: var(--subtext); font-size: 13px; margin-bottom: 22px; }
+  .label { font-size: 12px; text-transform: uppercase; letter-spacing: .08em; color: var(--subtext); margin-bottom: 8px; display: block; }
+  .id-row { display: flex; gap: 8px; margin-bottom: 18px; }
   #ownId {
-    flex: 1;
-    background: var(--crust);
-    border: 1px solid var(--surface);
-    border-radius: 10px;
-    padding: 12px;
-    font-family: ui-monospace, Consolas, monospace;
-    font-size: 13px;
-    color: var(--blue);
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    user-select: all;
+    flex: 1; background: var(--crust); border: 1px solid var(--surface); border-radius: 10px;
+    padding: 12px; font-family: ui-monospace, Consolas, monospace; font-size: 13px;
+    color: var(--blue); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; user-select: all;
   }
   button {
-    cursor: pointer;
-    border: none;
-    border-radius: 10px;
-    font-weight: 600;
-    font-size: 14px;
+    cursor: pointer; border: none; border-radius: 10px;
+    font-weight: 600; font-size: 14px;
     transition: transform .05s ease, filter .15s ease;
   }
   button:active { transform: scale(.97); }
   button:disabled { opacity: .45; cursor: not-allowed; }
-  #copyBtn {
-    background: var(--surface);
-    color: var(--text);
-    padding: 0 16px;
-    white-space: nowrap;
-  }
+  #copyBtn { background: var(--surface); color: var(--text); padding: 0 16px; white-space: nowrap; }
   #copyBtn:hover { filter: brightness(1.2); }
   #remoteIdInput {
-    width: 100%;
-    background: var(--crust);
-    border: 1px solid var(--surface);
-    border-radius: 10px;
-    padding: 12px;
-    color: var(--text);
-    font-size: 14px;
-    outline: none;
-    margin-bottom: 18px;
+    width: 100%; background: var(--crust); border: 1px solid var(--surface); border-radius: 10px;
+    padding: 12px; color: var(--text); font-size: 14px; outline: none; margin-bottom: 18px;
     font-family: ui-monospace, Consolas, monospace;
   }
   #remoteIdInput:focus { border-color: var(--mauve); }
   .btn-row { display: flex; gap: 10px; }
-  #callBtn {
-    flex: 1;
-    background: var(--green);
-    color: #11111b;
-    padding: 13px;
+  #callBtn { flex: 1; background: var(--green); color: #11111b; padding: 13px; }
+  #hangupBtn { flex: 1; background: var(--red); color: #11111b; padding: 13px; }
+  #retryBtn {
+    width: 100%; margin-top: 10px; background: var(--yellow); color: #11111b; padding: 11px;
   }
-  #callBtn:hover:not(:disabled) { filter: brightness(1.05); }
-  #hangupBtn {
-    flex: 1;
-    background: var(--red);
-    color: #11111b;
-    padding: 13px;
-  }
-  #hangupBtn:hover { filter: brightness(1.05); }
   .hidden { display: none !important; }
   #status {
-    margin-top: 18px;
-    background: var(--crust);
-    border: 1px solid var(--surface);
-    border-radius: 10px;
-    padding: 12px;
-    font-size: 14px;
-    text-align: center;
-    min-height: 44px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
+    margin-top: 18px; background: var(--crust); border: 1px solid var(--surface); border-radius: 10px;
+    padding: 12px; font-size: 14px; text-align: center; min-height: 44px;
+    display: flex; align-items: center; justify-content: center; gap: 8px;
   }
-  .dot {
-    width: 9px; height: 9px;
-    border-radius: 50%;
-    background: var(--blue);
-    flex-shrink: 0;
-  }
+  .dot { width: 9px; height: 9px; border-radius: 50%; background: var(--blue); flex-shrink: 0; }
   .dot.pulse { animation: pulse 1.2s infinite; }
-  @keyframes pulse {
-    0%, 100% { opacity: 1; }
-    50% { opacity: .3; }
-  }
-  .hint {
-    margin-top: 14px;
-    font-size: 12px;
-    color: var(--subtext);
-    text-align: center;
-    line-height: 1.5;
-  }
+  .dot.err { background: var(--red); }
+  .dot.ok { background: var(--green); }
+  @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: .3; } }
+  .hint { margin-top: 14px; font-size: 12px; color: var(--subtext); text-align: center; line-height: 1.6; }
+  details { margin-top: 12px; font-size: 12px; color: var(--subtext); }
+  details summary { cursor: pointer; }
+  #log { margin-top: 8px; max-height: 140px; overflow: auto; background: var(--crust);
+    border: 1px solid var(--surface); border-radius: 8px; padding: 8px; white-space: pre-wrap;
+    font-family: ui-monospace, Consolas, monospace; font-size: 11px; }
 </style>
 </head>
 <body>
@@ -178,10 +108,16 @@
       <button id="callBtn" type="button" disabled>📞 Позвонить</button>
       <button id="hangupBtn" type="button" class="hidden">🔴 Положить трубку</button>
     </div>
+    <button id="retryBtn" type="button" class="hidden">🔄 Переподключиться</button>
 
-    <div id="status"><span class="dot pulse"></span><span id="statusText">Подключение к сети…</span></div>
+    <div id="status"><span id="dot" class="dot pulse"></span><span id="statusText">Подключение к сети…</span></div>
 
-    <p class="hint">Отправь свой ID другу.<br />Для разговора нужен микрофон и интернет.</p>
+    <details>
+      <summary>Диагностика (покажи другу, если не работает)</summary>
+      <div id="log">лог пуст</div>
+    </details>
+
+    <p class="hint">Открой по HTTPS в Chrome/Edge/Firefox.<br />Если ID не появился: отключи VPN и блокировщик рекламы, обнови страницу.</p>
   </main>
 
 <script>
@@ -193,16 +129,36 @@
   var remoteIdInput = document.getElementById("remoteIdInput");
   var callBtn = document.getElementById("callBtn");
   var hangupBtn = document.getElementById("hangupBtn");
+  var retryBtn = document.getElementById("retryBtn");
   var statusTextEl = document.getElementById("statusText");
+  var dotEl = document.getElementById("dot");
+  var logEl = document.getElementById("log");
 
   var peer = null;
   var localStream = null;
   var activeCall = null;
   var activeConn = null;
   var remoteAudio = null;
+  var peerAttempt = 0;
+  var openTimer = null;
+  var logLines = [];
 
-  function setStatus(text) {
+  var FALLBACK_PEERJS = [
+    "https://cdn.jsdelivr.net/npm/peerjs@1.5.4/dist/peerjs.min.js",
+    "https://cdnjs.cloudflare.com/ajax/libs/peerjs/1.5.4/peerjs.min.js"
+  ];
+
+  function log(msg) {
+    var t = new Date().toLocaleTimeString("ru-RU");
+    logLines.push("[" + t + "] " + msg);
+    if (logLines.length > 60) { logLines.shift(); }
+    logEl.textContent = logLines.join("\n");
+    logEl.scrollTop = logEl.scrollHeight;
+  }
+
+  function setStatus(text, mode) {
     statusTextEl.textContent = text;
+    dotEl.className = "dot" + (mode === "err" ? " err" : mode === "ok" ? " ok" : " pulse");
   }
 
   function setInCall(inCall) {
@@ -214,9 +170,39 @@
       hangupBtn.classList.add("hidden");
       callBtn.classList.remove("hidden");
       remoteIdInput.disabled = false;
-      // Кнопку вызова включаем только если микрофон готов
       callBtn.disabled = !localStream;
     }
+  }
+
+  function showRetry(show) {
+    retryBtn.classList.toggle("hidden", !show);
+  }
+
+  function loadScript(src) {
+    return new Promise(function (resolve, reject) {
+      var s = document.createElement("script");
+      s.src = src;
+      s.onload = function () { resolve(src); };
+      s.onerror = function () { reject(new Error("load fail: " + src)); };
+      document.head.appendChild(s);
+    });
+  }
+
+  function ensurePeerLibrary() {
+    if (typeof Peer !== "undefined") {
+      return Promise.resolve();
+    }
+    log("PeerJS с unpkg не загрузился, пробую запасные CDN…");
+    var chain = Promise.reject();
+    FALLBACK_PEERJS.forEach(function (src) {
+      chain = chain.catch(function () { return loadScript(src); });
+    });
+    return chain.then(function () {
+      if (typeof Peer === "undefined") {
+        throw new Error("PeerJS не загрузился ни с одного CDN");
+      }
+      log("PeerJS загружен с запасного CDN");
+    });
   }
 
   function playRemoteStream(remoteStream) {
@@ -224,14 +210,12 @@
     remoteAudio = new Audio();
     remoteAudio.autoplay = true;
     remoteAudio.srcObject = remoteStream;
-    var playPromise = remoteAudio.play();
-    if (playPromise && typeof playPromise.catch === "function") {
-      playPromise.catch(function () {
+    var p = remoteAudio.play();
+    if (p && typeof p.catch === "function") {
+      p.catch(function () {
         setStatus("Нажми в любом месте страницы, чтобы включить звук");
         var enableOnce = function () {
-          if (remoteAudio) {
-            remoteAudio.play().catch(function () {});
-          }
+          if (remoteAudio) { remoteAudio.play().catch(function () {}); }
           document.removeEventListener("click", enableOnce);
         };
         document.addEventListener("click", enableOnce);
@@ -263,23 +247,22 @@
   function endCall(message) {
     cleanupCall();
     setStatus(message);
+    log("call end: " + message);
   }
 
   function setupCallHandlers(call) {
     activeCall = call;
     setInCall(true);
-
     call.on("stream", function (remoteStream) {
       playRemoteStream(remoteStream);
-      setStatus("В разговоре");
+      setStatus("В разговоре", "ok");
+      log("получен remote stream");
     });
-
-    // Собеседник положил трубку — PeerJS закрывает звонок и у нас
     call.on("close", function () {
       endCall("Звонок завершён");
     });
-
-    call.on("error", function () {
+    call.on("error", function (err) {
+      log("call error: " + (err && err.type ? err.type : err));
       endCall("Ошибка звонка");
     });
   }
@@ -292,38 +275,29 @@
       }
     });
     conn.on("close", function () {
-      if (activeConn === conn) {
-        activeConn = null;
-      }
+      if (activeConn === conn) { activeConn = null; }
     });
     conn.on("error", function () {
-      if (activeConn === conn) {
-        activeConn = null;
-      }
+      if (activeConn === conn) { activeConn = null; }
     });
   }
 
   function openDataConnection(remoteId) {
     try {
       var conn = peer.connect(remoteId, { reliable: true });
-      conn.on("open", function () {
-        setupDataHandlers(conn);
-      });
-      // Если соединение не открылось, всё равно слушаем hangup
+      conn.on("open", function () { setupDataHandlers(conn); });
       conn.on("error", function () {});
     } catch (e) {
-      // Дата-канал необязателен: голос идёт через MediaConnection
+      log("data-conn fail: " + e);
     }
   }
 
   function makeCall() {
     var remoteId = remoteIdInput.value.trim();
-    if (!remoteId) {
-      setStatus("Введи ID друга");
-      return;
-    }
-    if (!peer || peer.destroyed) {
-      setStatus("Нет подключения к сети, обнови страницу");
+    if (!remoteId) { setStatus("Введи ID друга"); return; }
+    if (!peer || peer.destroyed || !peer.open) {
+      setStatus("Нет подключения к сети. Нажми «Переподключиться»", "err");
+      showRetry(true);
       return;
     }
     if (!localStream) {
@@ -331,24 +305,21 @@
       initMicrophone();
       return;
     }
-    if (activeCall) {
-      return;
-    }
-    if (remoteId === peer.id) {
-      setStatus("Нельзя позвонить самому себе");
-      return;
-    }
+    if (activeCall) { return; }
+    if (remoteId === peer.id) { setStatus("Нельзя позвонить самому себе"); return; }
 
     setStatus("Звонок…");
+    log("звоню на " + remoteId);
     var call = null;
     try {
       call = peer.call(remoteId, localStream);
     } catch (e) {
-      setStatus("Не удалось позвонить");
+      log("peer.call throw: " + e);
+      setStatus("Не удалось позвонить", "err");
       return;
     }
     if (!call) {
-      setStatus("Не удалось позвонить: проверь ID друга");
+      setStatus("Не удалось позвонить: проверь ID друга", "err");
       return;
     }
     openDataConnection(remoteId);
@@ -356,8 +327,6 @@
   }
 
   function hangup() {
-    // Уведомляем вторую сторону по дата-каналу,
-    // чтобы её интерфейс тоже вернулся в исходное состояние
     if (activeConn && activeConn.open) {
       try { activeConn.send("hangup"); } catch (e) {}
     }
@@ -365,18 +334,16 @@
   }
 
   function onIncomingCall(call) {
-    // Если уже разговариваем — отклоняем второй звонок
     if (activeCall) {
       try { call.close(); } catch (e) {}
       return;
     }
     if (!localStream) {
-      // Микрофон ещё не готов — пробуем получить и потом ответить
       setStatus("Входящий звонок… получаем микрофон");
       initMicrophone(function () {
         if (!localStream) {
           try { call.close(); } catch (e) {}
-          setStatus("Нет доступа к микрофону");
+          setStatus("Нет доступа к микрофону", "err");
           return;
         }
         answerCall(call);
@@ -390,10 +357,12 @@
     try {
       call.answer(localStream);
     } catch (e) {
-      setStatus("Не удалось ответить на звонок");
+      log("answer throw: " + e);
+      setStatus("Не удалось ответить на звонок", "err");
       return;
     }
     setStatus("Входящий звонок…");
+    log("входящий звонок, отвечаю");
     setupCallHandlers(call);
   }
 
@@ -403,9 +372,16 @@
       if (typeof done === "function") { done(); }
       return;
     }
+    if (location.protocol !== "https:" && location.hostname !== "localhost" && location.hostname !== "127.0.0.1") {
+      setStatus("Открой сайт по HTTPS, иначе микрофон не дадут", "err");
+      log("insecure context: " + location.protocol);
+      if (typeof done === "function") { done(); }
+      return;
+    }
     setStatus("Разрешите доступ к микрофону");
     if (!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia) {
-      setStatus("Браузер не поддерживает микрофон");
+      setStatus("Браузер не поддерживает микрофон. Открой в Chrome/Edge", "err");
+      log("getUserMedia missing");
       if (typeof done === "function") { done(); }
       return;
     }
@@ -413,86 +389,148 @@
       .then(function (stream) {
         localStream = stream;
         callBtn.disabled = false;
-        if (!activeCall) {
-          setStatus("Готов к звонку. Введи ID друга");
+        if (!activeCall && peer && peer.open) {
+          setStatus("Готов к звонку. Введи ID друга", "ok");
         }
+        log("микрофон получен");
         if (typeof done === "function") { done(); }
       })
-      .catch(function () {
-        setStatus("Нет доступа к микрофону. Разреши доступ и обнови страницу");
+      .catch(function (err) {
+        var name = err && err.name ? err.name : "";
+        log("mic error: " + name);
+        if (name === "NotAllowedError") {
+          setStatus("Доступ к микрофону запрещён. Разреши в браузере и обнови", "err");
+        } else if (name === "NotFoundError") {
+          setStatus("Микрофон не найден", "err");
+        } else {
+          setStatus("Нет доступа к микрофону (" + name + ")", "err");
+        }
         callBtn.disabled = true;
         if (typeof done === "function") { done(); }
       });
   }
 
-  function initPeer() {
-    setStatus("Подключение к сети…");
-    try {
-      peer = new Peer();
-    } catch (e) {
-      setStatus("Не удалось подключиться к сети");
-      return;
-    }
-
-    peer.on("open", function (id) {
-      ownIdEl.textContent = id;
-      copyBtn.disabled = false;
-      initMicrophone();
-    });
-
-    peer.on("call", onIncomingCall);
-
-    peer.on("connection", function (conn) {
-      conn.on("open", function () {
-        setupDataHandlers(conn);
-      });
-      conn.on("data", function (data) {
-        if (data === "hangup") {
-          endCall("Собеседник завершил звонок");
-        }
-      });
-    });
-
-    peer.on("disconnected", function () {
-      setStatus("Соединение потеряно. Переподключение…");
-      try { peer.reconnect(); } catch (e) {}
-    });
-
-    peer.on("close", function () {
-      setStatus("Отключено от сети");
-    });
-
-    peer.on("error", function (err) {
-      var type = err && err.type ? err.type : "";
-      if (type === "peer-unavailable") {
-        endCall("Абонент не найден. Проверь ID друга");
-      } else if (type === "network" || type === "server-error" || type === "socket-error" || type === "socket-closed") {
-        setStatus("Ошибка сети. Обнови страницу");
-      } else if (type === "browser-incompatible") {
-        setStatus("Браузер не поддерживает звонки");
-      } else if (type === "invalid-id" || type === "unavailable-id") {
-        setStatus("Ошибка идентификатора");
-      } else {
-        if (!activeCall) {
-          setStatus("Ошибка: " + type);
-        }
+  function scheduleReconnect(reason) {
+    showRetry(true);
+    log("переподключение через 3с (" + reason + ")");
+    setTimeout(function () {
+      if (!peer || peer.destroyed || !peer.open) {
+        initPeer();
       }
+    }, 3000);
+  }
+
+  function initPeer() {
+    peerAttempt += 1;
+    showRetry(false);
+    setStatus("Подключение к сети… (попытка " + peerAttempt + ")");
+    log("initPeer попытка " + peerAttempt);
+
+    if (peer && !peer.destroyed) {
+      try { peer.destroy(); } catch (e) {}
+      peer = null;
+    }
+    if (openTimer) { clearTimeout(openTimer); openTimer = null; }
+
+    ensurePeerLibrary().then(function () {
+      try {
+        peer = new Peer({
+          debug: 1,
+          config: {
+            iceServers: [
+              { urls: "stun:stun.l.google.com:19302" },
+              { urls: "stun:global.stun.twilio.com:3478" }
+            ]
+          }
+        });
+      } catch (e) {
+        log("new Peer throw: " + e);
+        setStatus("Не удалось создать подключение", "err");
+        showRetry(true);
+        return;
+      }
+
+      // Если сервер не ответил за 12 секунд — показываем кнопку повтора
+      openTimer = setTimeout(function () {
+        if (!peer || !peer.open) {
+          log("open timeout 12s");
+          setStatus("Сервер PeerJS не отвечает. Нажми «Переподключиться»", "err");
+          showRetry(true);
+        }
+      }, 12000);
+
+      peer.on("open", function (id) {
+        if (openTimer) { clearTimeout(openTimer); openTimer = null; }
+        ownIdEl.textContent = id;
+        copyBtn.disabled = false;
+        setStatus("ID получен. Разреши микрофон…", "ok");
+        showRetry(false);
+        log("peer open: " + id);
+        initMicrophone();
+      });
+
+      peer.on("call", onIncomingCall);
+
+      peer.on("connection", function (conn) {
+        conn.on("open", function () { setupDataHandlers(conn); });
+        conn.on("data", function (data) {
+          if (data === "hangup") { endCall("Собеседник завершил звонок"); }
+        });
+      });
+
+      peer.on("disconnected", function () {
+        log("peer disconnected");
+        setStatus("Соединение потеряно. Переподключение…");
+        showRetry(true);
+        try { peer.reconnect(); } catch (e) {
+          log("reconnect throw: " + e);
+          scheduleReconnect("reconnect-fail");
+        }
+      });
+
+      peer.on("close", function () {
+        log("peer close");
+        setStatus("Отключено от сети", "err");
+        scheduleReconnect("close");
+      });
+
+      peer.on("error", function (err) {
+        var type = err && err.type ? err.type : "unknown";
+        log("peer error: " + type);
+        if (type === "peer-unavailable") {
+          endCall("Абонент не найден. Проверь ID друга");
+        } else if (type === "network" || type === "server-error" || type === "socket-error" || type === "socket-closed") {
+          setStatus("Ошибка сети (" + type + "). Пробую переподключиться…", "err");
+          scheduleReconnect(type);
+        } else if (type === "browser-incompatible") {
+          setStatus("Браузер не поддерживает звонки. Открой в Chrome", "err");
+        } else if (type === "invalid-id" || type === "unavailable-id") {
+          setStatus("Ошибка идентификатора", "err");
+        } else if (type === "webrtc") {
+          setStatus("Ошибка WebRTC в браузере", "err");
+        } else {
+          if (!activeCall) {
+            setStatus("Ошибка: " + type, "err");
+            showRetry(true);
+          }
+        }
+      });
+    }).catch(function (err) {
+      log("CDN fail: " + err);
+      setStatus("Библиотека PeerJS не загрузилась. Отключи блокировщик рекламы и обнови", "err");
+      showRetry(true);
     });
   }
 
   copyBtn.addEventListener("click", function () {
     var id = ownIdEl.textContent.trim();
-    if (!id || id === "Генерация…") {
-      return;
-    }
+    if (!id || id === "Генерация…") { return; }
     if (navigator.clipboard && navigator.clipboard.writeText) {
       navigator.clipboard.writeText(id).then(function () {
         var old = copyBtn.textContent;
         copyBtn.textContent = "Скопировано!";
         setTimeout(function () { copyBtn.textContent = old; }, 1500);
-      }).catch(function () {
-        fallbackCopy(id);
-      });
+      }).catch(function () { fallbackCopy(id); });
     } else {
       fallbackCopy(id);
     }
@@ -512,11 +550,13 @@
 
   callBtn.addEventListener("click", makeCall);
   hangupBtn.addEventListener("click", hangup);
+  retryBtn.addEventListener("click", function () {
+    log("ручной реконнект");
+    initPeer();
+  });
 
   remoteIdInput.addEventListener("keydown", function (e) {
-    if (e.key === "Enter") {
-      makeCall();
-    }
+    if (e.key === "Enter") { makeCall(); }
   });
 
   window.addEventListener("beforeunload", function () {
@@ -525,6 +565,7 @@
     }
   });
 
+  log("страница загружена: " + location.href);
   initPeer();
 })();
 </script>
